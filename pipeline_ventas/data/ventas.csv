@@ -1,0 +1,10 @@
+producto,cantidad,precio_unitario,mes
+Manzanas,50,1.20,enero
+Naranjas,30,0.90,enero
+Plátanos,80,0.60,enero
+Manzanas,40,1.25,febrero
+Naranjas,55,0.95,febrero
+Plátanos,90,0.65,febrero
+Manzanas,60,1.30,marzo
+Naranjas,20,1.00,marzo
+Plátanos,75,0.70,marzo

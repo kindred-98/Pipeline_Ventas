@@ -1,0 +1,35 @@
+name: Pipeline Ventas con Cobertura
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar tests + cobertura mínima 80%
+        run: pytest tests/ -v --cov=src --cov-fail-under=80
+
+      - name: Generar reporte HTML de cobertura
+        run: pytest tests/ --cov=src --cov-report=html
+
+      - name: Subir reporte como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobertura-html
+          path: htmlcov/
