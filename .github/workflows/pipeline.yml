@@ -14,6 +14,9 @@ jobs:
       - name: Descargar código
         uses: actions/checkout@v4
 
+      - name: Añadir src al PYTHONPATH
+        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
+
       - name: Configurar Python 3.11
         uses: actions/setup-python@v5
         with:
