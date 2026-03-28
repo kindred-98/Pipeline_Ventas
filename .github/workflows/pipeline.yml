@@ -22,8 +22,12 @@ jobs:
       - name: Instalar dependencias
         run: pip install -r requirements.txt
 
+      - name: Configurar PYTHONPATH para paquete local
+        run: |
+          echo "PYTHONPATH=${GITHUB_WORKSPACE}/pipeline_ventas" >> $GITHUB_ENV
+
       - name: Ejecutar tests + cobertura mínima 80%
-        run: pytest tests/ -v --cov=src --cov-fail-under=80
+        run: pytest tests/ -v --cov=pipeline_ventas/src --cov-fail-under=80
 
       - name: Generar reporte HTML de cobertura
         run: pytest tests/ --cov=src --cov-report=html
