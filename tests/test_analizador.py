@@ -6,7 +6,7 @@ import pandas as pd
 # Asegura que el paquete local es importable desde la carpeta tests
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from pipeline_ventas.src.analizador import (
+from src.analizador import (
     cargar_ventas,
     calcular_total_por_producto,
     top_productos,
@@ -21,8 +21,9 @@ from pipeline_ventas.src.analizador import (
 
 @pytest.fixture
 def df_ventas():
-    ruta = os.path.join(os.path.dirname(__file__), "..", "pipeline_ventas", "data", "ventas.csv")
+    ruta = "data/ventas.csv"
     return cargar_ventas(ruta)
+
 
 
 # -------------------------
